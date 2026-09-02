@@ -1,0 +1,55 @@
+###############################################################################
+# IMPORTANT: Beware if you change section ids or labels because some need to be
+# hardcoded in scripts. In particular:
+# - check the `sectionTitle` variable in `src/add-cla-commitment.js`.
+# - check the CLA checker's code if you alter the "repository" and "pr" IDs,
+# as the checker builds on them to pre-fill the issue template on behalf of a
+# contributor.
+# - check the CLA checker's `REPOSITORY_ANCHOR` config parameter if you change
+# the label of the repository section.
+###############################################################################
+
+name: Accept Contributor Agreement
+description: Accept the repository's Contributor Agreement
+title: "Accept agreement"
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Contributor Agreement
+
+        For any repository that is part of the W3C Open Source Program, W3C must have on file a record from each Contributor indicating agreement with terms of the [W3C Open Source Individual Contributor License Agreement](https://www.w3.org/2026/07/w3c-open-source-icla.html) ("CLA").
+        This agreement is for your protection as a Contributor as well as the protection of W3C and its users. It does not change your rights to use your own Contributions for any other purpose.
+
+        Use this form to make a commitment to the W3C Open Source Individual Contributor License Agreement for any contribution to the project repository that you identify below.
+
+  - type: input
+    id: repository
+    attributes:
+      label: Project repository
+      description: Full name of the project repository for which this CLA is being agreed upon, e.g., `w3c-oss/canivc`.
+    validations:
+      required: true
+
+  - type: input
+    id: pr
+    attributes:
+      label: Pull request
+      description: URL of the pull request for which this CLA approval is required, if any, e.g., `https://github.com/w3c-oss/canivc/pull/70`.
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Agreement acceptance
+      options:
+        - label: I have read and agree to the [W3C Open Source Individual Contributor License Agreement version 0.5](https://www.w3.org/2026/07/w3c-open-source-icla.html) (`https://www.w3.org/2026/07/w3c-open-source-icla.html`) for the repository listed above.
+          required: true
+
+  - type: checkboxes
+    id: identity
+    attributes:
+      label: Identity confirmation
+      options:
+        - label: I am submitting this agreement for my own authenticated GitHub account.
+          required: true

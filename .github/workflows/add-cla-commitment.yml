@@ -1,0 +1,50 @@
+name: "Record approved CLA commitment"
+
+permissions:
+  # The workflow will lock the issue and push contents in a JSON file
+  contents: write
+  issues: write
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    # We're only interested in approvals
+    if: contains( github.event.issue.labels.*.name, 'approved')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Setup node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Complete JSON file
+        run: node src/add-cla-commitment.js ${{ github.event.issue.html_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updates
+        run: |
+          git config user.name "CLA checker bot"
+          git config user.email "<>"
+          git commit -m '[Agreement] ${{ github.event.issue.title }}' -m 'Close #${{ github.event.issue.number }}' -a || true
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v1.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
