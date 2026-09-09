@@ -5,5 +5,12 @@
     "date": "2026-09-09T16:01:58.628Z",
     "issue": "https://github.com/w3c-oss/cla-commitments/issues/5",
     "pr": "https://github.com/w3c-oss/internal-tests/pull/1"
+  },
+  {
+    "id": 2948484,
+    "username": "ianbjacobs",
+    "date": "2026-09-09T17:20:48.667Z",
+    "issue": "https://github.com/w3c-oss/cla-commitments/issues/6",
+    "pr": "https://github.com/w3c-oss/internal-tests/pull/2"
   }
 ]
