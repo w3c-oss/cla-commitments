@@ -32,5 +32,12 @@
     "date": "2026-11-18T17:56:47.883Z",
     "issue": "https://github.com/w3c-oss/cla-commitments/issues/16",
     "pr": "https://github.com/w3c-oss/webmcp-polyfill/pull/22"
+  },
+  {
+    "id": 145676,
+    "username": "tomayac",
+    "date": "2026-11-18T20:42:55.567Z",
+    "issue": "https://github.com/w3c-oss/cla-commitments/issues/17",
+    "pr": "https://github.com/w3c-oss/webmcp-polyfill/pull/23"
   }
 ]
